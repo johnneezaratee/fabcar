@@ -6,15 +6,30 @@ Example of a supply chain management app for Hyperledger Fabric
 
 Created by Team 1 - Johnny, Joshua M, Jarod, Pau
 
-Prerequisites:
+================================
 
-1. Make sure that Go (golang) is properly installed.
+Table of Contents
 
-2. You have the fabric-samples repository cloned in your machine.
+A. Prerequisites
 
-3. You have Postman installed.
+B. Set-up instructions
 
-Set-up instructions:
+C. How to use
+
+D. Troubleshooting
+
+================================
+
+A. Prerequisites:
+
+1. Clone this repository: https://github.com/johnneezaratee/my-fabric-sample
+
+2. Make sure that Go (golang) is properly installed, as well as Postman is installed in your machine.
+
+4. You have previously cloned the fabric-samples repository from Sir Bhushan and did the hands-on labs from Feb 4 to 6.
+
+
+B. Set-up instructions:
 
 1. Clone this repository.
 
@@ -26,29 +41,30 @@ Set-up instructions:
 
 5. Type and press Enter: node enrollAdmin.sh
 
-6. Type and press Enter: node registerUser.sh
+6. (Optional) Type and press Enter: node registerUser.sh
 
-7. Type and press Enter: node rSupplier1.sh
+7. (Optional) Type and press Enter: node rSupplier1.sh
 
-8. Type and press Enter: node rOEM.sh
+8. (Optional) Type and press Enter: node rOEM.sh
 
 9. To test all functions, type and press Enter: node app_scm.sh
 
    <Port> is 3000.
 
-10. To test as supplier1, open a new Terminal window, type and press Enter: node appSupplier1.sh
+10. (Optional) To test as supplier1, open a new Terminal window, type and press Enter: node appSupplier1.sh
 
     <Port> is 3001.
 
     Note: supplier1 can only raise an invoice (number 3 below).
 
-10. To test as OEM, open a new Terminal window, type and press Enter: node appOEM.sh
+10. (Optional) To test as OEM, open a new Terminal window, type and press Enter: node appOEM.sh
 
     <Port> is 3002.
 
     Note: OEM can only set that goods are received (number 4 below).
 
-How to use:
+
+C. How to use:
 	
 1. Open Postman
 
@@ -116,10 +132,53 @@ How to use:
 
    Do number 2 to check if it worked.
 
+
+D. Troubleshooting
+
+1. In case errors such as "Invalid Smart Contract function" or "chaincode scm not found" appears, try doing any of the following one at a time:
+
+	a. Check if files are put correctly in fabric-samples/fabcar and fabric-samples/chaincode/fabcar/go directories.
+
+	b. Make sure that scm.go is the only content of fabric-samples/chaincode/fabcar/go directory.
+
+	c. If problem still persists, type in the following commands in Terminal...
+
+		docker rm $(docker ps -a | grep scm | awk '{print $1}') -f
+		docker rmi $(docker images -a | grep scm | awk '{print $1}') -f
+
+	   Then do numbers 3 to 5 and 9 in B. Set-up instuctions.
+
+	d. If problem still persists, try restarting your machine and do step c.
+
+2. If the error says ".../chaincode/lib/cid" or any directory is missing, try doing these:
+
+	2.1. Open Terminal and go to your home directory. Then enter these commands...
+
+		go get github.com/golang/protobuf/proto
+		go get github.com/hyperledger/fabric/common/attrmgr
+		go get github.com/hyperledger/fabric/core/chaincode/lib/cid
+		go get github.com/pkg/errors
+
+	2.2. Go to your fabric-samples/chaincode directory and create the following directories...
+
+		golang/protobuf/proto
+		hyperledger/fabric/common/attrmgr
+		hyperledger/fabric/core/chaincode/lib/cid
+		pkg/errors
+
+	2.3. Then go to (where your Go directory is located)/go/src/github.com and copy all the contents inside these directories...
+
+		golang/protobuf/proto
+		hyperledger/fabric/common/attrmgr
+		hyperledger/fabric/core/chaincode/lib/cid
+		pkg/errors
+
+	2.4. Then paste the contents to their respective directories you created in step 2.2.
+	
 ------------------------------------------------
 
 This repo is still in progress. For questions, contact Johnny via Slack/Messenger/email.
 
 Thank you. :)
-    
+
 
