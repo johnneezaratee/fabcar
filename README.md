@@ -8,6 +8,16 @@ Created by Team 1 - Johnny, Joshua M, Jarod, Pau
 
 ================================
 
+Environment: 
+
+Host: Windows 10 Pro (64-bit) version 1809 / Core m-5y51 / 8GB RAM / 256GB SSD
+
+Virtualization software: VMware Workstation Pro 15 (VirtualBox 5.2.22 will do)
+
+Guest: Ubuntu 16.04.5 LTS (64-bit), Config: 4GB RAM / 40GB Storage
+
+================================
+
 Table of Contents
 
 A. Prerequisites
