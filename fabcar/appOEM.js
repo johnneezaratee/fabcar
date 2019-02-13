@@ -196,7 +196,7 @@ console.error('Failed to invoke successfully :: ' + err);
 
 })
 
-app.get('/queryAllInvoice', function (req, res) {
+app.get('/', function (req, res) {
 
 
 

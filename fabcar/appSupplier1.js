@@ -90,7 +90,7 @@ newInvoice.push(invoiceNumber);
 
 if (req.method == "POST")
 {
-  request.fcn='raiseInvoice';
+  request.fcn='createInvoice';
   newInvoice.push(billedTo);
   newInvoice.push(invoiceDate);
   newInvoice.push(invoiceAmount); 
@@ -203,7 +203,7 @@ console.error('Failed to invoke successfully :: ' + err);
 
 })
 
-app.get('/queryAllInvoice', function (req, res) {
+app.get('/', function (req, res) {
 
 
 
