@@ -21,12 +21,12 @@ console.log('Store path:'+store_path);
 var tx_id = null;
 
 
-const user = "oem"
+const user = "bank"
 
 
 const express = require('express')
 const app = express()
-const port = 3002
+const port = 3003
 const bodyParser = require('body-parser');
 const cors = require('cors')
 
@@ -77,21 +77,15 @@ var request = {
 
 var newInvoice = [];
 var invoiceNumber = req.body.invoiceNumber;
-var gr = req.body.gr;
-var repaymentAmount = req.body.repaymentAmount;
+var paidAmount = req.body.paidAmount;
 newInvoice.push(invoiceNumber);
 
 if(req.method == "PUT")
 {
-  if(gr)    
+  if(paidAmount)
   {
-    request.fcn= 'receiveGoods',
-    newInvoice.push(gr);
-  }
-  else if(repaymentAmount)
-  {
-    request.fcn= 'isRepaymentStatus',
-    newInvoice.push(repaymentAmount);
+    request.fcn= 'isPaidStatus',
+    newInvoice.push(paidAmount);
   }
 }
 
